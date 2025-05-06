@@ -6,7 +6,6 @@ from google_a2a.common.types import AgentSkill, AgentCapabilities, AgentCard
 from google_a2a.common.server import A2AServer
 from my_project.task_manager import MyAgentTaskManager
 
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -25,7 +24,10 @@ def main(host, port):
   )
   logging.info(skill)
 
-  capabilities = AgentCapabilities()
+  capabilities = AgentCapabilities(
+    streaming=True
+  )
+  
   agent_card = AgentCard(
     name="Echo Agent",
     description="This agent echos the input given",
