@@ -25,6 +25,8 @@ class MyAgentTaskManager(InMemoryTaskManager):
     await self.upsert_task(request.params)
 
     task_id = request.params.id
+    # Our custom logic that simply marks the task as complete
+    # and returns the echo text
     received_text = request.params.message.parts[0].text
     task = await self._update_task(
       task_id=task_id,
